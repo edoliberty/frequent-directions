@@ -80,9 +80,9 @@ class SyntheticDataMaker:
 if __name__=='__main__':
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument('n', type=int, default=100, help='number of rows in matrix')
-    parser.add_argument('d', type=int, default=10, help='dimension of row vectors (number of columns in matrix)')
-    parser.add_argument('-k', type=int, default=3, help='the rank of the signal')
+    parser.add_argument('-n', type=int, default=100, help='number of rows in matrix')
+    parser.add_argument('-d', type=int, default=10, help='dimension of row vectors (number of columns in matrix)')
+    parser.add_argument('-k', type=int, default=5, help='the rank of the signal')
     parser.add_argument('-snr', type=float, default=10.0, help='signal to noise ratio')
     args = parser.parse_args()
     

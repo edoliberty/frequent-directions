@@ -1,5 +1,5 @@
 #!/usr/bin/python
-from numpy import zeros, max, sqrt, isnan, isinf, dot, diag, count_nonzero
+from numpy import zeros, max, sqrt, isnan, isinf, dot, diag
 from numpy.linalg import svd, linalg
 from scipy.linalg import svd as scipy_svd
 from scipy.sparse.linalg import svds as scipy_svds
@@ -17,10 +17,7 @@ class FrequentDirections:
         self.nextZeroRow = 0
                  
     def append(self,vector):     
-        if count_nonzero(vector) == 0:
-            return
-
-    	if self.nextZeroRow >= self.m:
+        if self.nextZeroRow >= self.m:
             self.__rotate__()
 
         self._sketch[self.nextZeroRow,:] = vector 
@@ -52,14 +49,17 @@ if __name__=='__main__':
     import sys
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument('d', type=int, default=10, help='dimension of row vectors (number of columns in matrix).')
-    parser.add_argument('ell', type=int, default=10, help='the number of rows the sketch can keep.')
+    parser.add_argument('-d', type=int, required=True, help='dimension of row vectors (number of columns in matrix).')
+    parser.add_argument('-ell', type=int, required=True, help='the number of rows the sketch can keep.')
     args = parser.parse_args()
     
     fd = FrequentDirections(args.d, args.ell)
     for line in sys.stdin:
-        row = [float(s) for s in line.strip('\n\r').split(',')]
-        assert(len(row) == args.d)
+        try:
+            row = [float(s) for s in line.strip('\n\r').split(',')]
+            assert(len(row) == args.d)
+        except:
+            continue
         fd.append(row)
         
     for row in fd.get():    
