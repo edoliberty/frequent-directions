@@ -3,9 +3,9 @@ This repo was created by [Edo Liberty](www.edoliberty.com) and [Mina Ghashami](h
 It contains the simplest version of the frequent directions algorithm for matrix sketching in Python. 
 It is developed for academic use only and for reproducibility of the results in the following papers:
 * [Simple and Deterministic Matrix Sketches](http://www.cs.yale.edu/homes/el327/papers/simpleMatrixSketching.pdf) Edo Liberty
-* [Relative Errors for Deterministic Low-Rank Matrix Approximations](http://www.cs.utah.edu/~ghashami/papers/relative_err_soda.pdf) Mina Ghashami, Jeff M. Phillips
-* [Frequent Directions: Simple and Deterministic Matrix Sketching](http://www.cs.utah.edu/~ghashami/papers/fd_journal.pdf) Mina Ghashami, Edo Liberty, Jeff M. Phillips, David P. Woodruff
-* [Efficient Frequent Directions Algorithm for Sparse Matrices](http://arxiv.org/abs/1602.00412) Mina Ghashami, Edo Liberty, Jeff M. Phillips
+* [Relative Errors for Deterministic Low-Rank Matrix Approximations](http://www.cs.utah.edu/~ghashami/papers/relative_err_soda.pdf) Mina Ghashami, and Jeff M. Phillips
+* [Frequent Directions: Simple and Deterministic Matrix Sketching](http://www.cs.utah.edu/~ghashami/papers/fd_journal.pdf) Mina Ghashami, Edo Liberty, Jeff M. Phillips, and David P. Woodruff
+
 
 ### Creating an example matrix
 
