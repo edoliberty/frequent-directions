@@ -9,7 +9,7 @@ It is developed for academic use only and for reproducibility of the results in 
 
 ### Creating an example matrix
 
-Run this command to crate a matrix to work with
+Run this command to create a matrix to work with
     
     $ ./syntheticDataMaker.py -n=1000 -d=50 > matrix.csv
     
