@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from numpy import zeros, max, sqrt, isnan, isinf, dot, diag, count_nonzero
 from numpy.linalg import svd, linalg
 from scipy.linalg import svd as scipy_svd
@@ -42,8 +43,27 @@ class FrequentDirections:
             self._sketch[:len(s),:] = dot(diag(s), Vt[:len(s),:])
             self._sketch[len(s):,:] = 0
             self.nextZeroRow = len(s)
-
          
     def get(self):
         return self._sketch[:self.ell,:]
+    
+
+if __name__=='__main__':
+    import sys
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('d', type=int, default=10, help='dimension of row vectors (number of columns in matrix).')
+    parser.add_argument('ell', type=int, default=10, help='the number of rows the sketch can keep.')
+    args = parser.parse_args()
+    
+    fd = FrequentDirections(args.d, args.ell)
+    for line in sys.stdin:
+        row = [float(s) for s in line.strip('\n\r').split(',')]
+        assert(len(row) == args.d)
+        fd.append(row)
+        
+    for row in fd.get():    
+        sys.stdout.write('%s\n'%(','.join('%.2E'%x for x in row.flatten())))
+        
+        
     
