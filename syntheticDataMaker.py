@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import sys
 from numpy.random import randn
 from numpy.linalg import qr
@@ -74,3 +75,22 @@ class SyntheticDataMaker:
     def writeToFileIter(self, vs, f=sys.stdout):
         for v in vs:
             f.write(self.__vector_to_string__(v))
+
+
+if __name__=='__main__':
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('n', type=int, default=100, help='number of rows in matrix')
+    parser.add_argument('d', type=int, default=10, help='dimension of row vectors (number of columns in matrix)')
+    parser.add_argument('-k', type=int, default=3, help='the rank of the signal')
+    parser.add_argument('-snr', type=float, default=10.0, help='signal to noise ratio')
+    args = parser.parse_args()
+    
+    sdn = SyntheticDataMaker()
+    sdn.initBeforeMake(args.d, args.k, args.snr)
+    
+    for i in xrange(args.n):
+        row  = sdn.makeRow()
+        sdn.writeToFile(row)
+
+    
